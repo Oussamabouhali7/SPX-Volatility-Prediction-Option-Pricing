@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #F5F5F5;
+}
+
+code {
+  font-family: 'Fira Code', source-code-pro, Menlo, Monaco, Consolas, monospace;
+  background-color: #f0f0f0;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #DC6B2F; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #A04A1D; }
