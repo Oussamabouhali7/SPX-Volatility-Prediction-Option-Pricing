@@ -1,0 +1,65 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: pwc_iv_db
+    environment:
+      POSTGRES_USER: pwc_user
+      POSTGRES_PASSWORD: pwc_password
+      POSTGRES_DB: pwc_iv
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pwc_user -d pwc_iv"]
+      interval: 5s
+      retries: 10
+
+
+  backend:
+    build: ./backend
+    container_name: pwc_iv_backend
+    depends_on:
+      db:
+        condition: service_healthy
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    environment:
+      DATABASE_URL: postgresql://pwc_user:pwc_password@db:5432/pwc_iv
+      JWT_SECRET: change_me_in_production_random_string_64chars_here
+      JWT_ALGORITHM: HS256
+      JWT_EXPIRE_MINUTES: 60
+      DATA_FILE: /app/data/options_merged_spx.csv
+      NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility
+    ports:
+      - "8000:8000"
+      - "8888:8888"
+    volumes:
+      - ./backend:/app
+      - ./backend/saved_models:/app/saved_models
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  frontend:
+    build: ./frontend
+    container_name: pwc_iv_frontend
+    depends_on:
+      - backend
+    environment:
+      REACT_APP_API_URL: http://localhost:8000
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: npm start
+
+volumes:
+  pgdata:
