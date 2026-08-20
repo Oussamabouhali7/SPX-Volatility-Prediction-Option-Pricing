@@ -247,9 +247,7 @@ Fonte : **Inter** (Google Fonts).
 
 ---
 
-## 📝 Licence
 
-Projet académique — usage éducatif.
 
 ## 🙏 Crédits
 
