@@ -114,15 +114,7 @@ docker exec pwc_iv_backend python -m app.ml.train_all --no-dl --max-windows=5
 | **Documentation API (Swagger)** | http://localhost:8000/docs |
 | **PostgreSQL** | localhost:5432 (user: `pwc_user`, pw: `pwc_password`, db: `pwc_iv`) |
 
-### Compte par défaut
 
-| Username | Password | Rôle |
-|---|---|---|
-| `admin` | `PwC2024!` | Admin |
-
-⚠️ **Changez le mot de passe en production** via l'onglet Admin ou `users_router`.
-
----
 
 ## 🛠️ Lancement sans Docker (développement)
 
