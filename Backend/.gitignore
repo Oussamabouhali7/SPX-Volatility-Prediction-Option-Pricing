@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pkl
+*.keras
+.env
+.venv/
+venv/
+saved_models/*.pkl
+saved_models/*.keras
+saved_models/*.json
+data/options_merged_spx.csv
+*.log
+.DS_Store
