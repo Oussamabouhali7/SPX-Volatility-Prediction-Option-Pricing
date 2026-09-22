@@ -1,0 +1,152 @@
+{
+  "feature_cols": [
+    "moneyness_norm",
+    "moneyness_sq",
+    "log_tenor",
+    "sqrt_tenor",
+    "mny_x_logt",
+    "vix",
+    "rate",
+    "hvol_30",
+    "spx_ret",
+    "is_crisis"
+  ],
+  "n_train": 366996,
+  "n_val": 78642,
+  "n_test": 78642,
+  "models": {
+    "Lasso": {
+      "train_rmse": 0.022806487406146395,
+      "val_rmse": 0.02433085544524889,
+      "test_rmse": 0.02411022757013103,
+      "test_r2": 0.8023636468628979,
+      "test_mae": 0.018767897352210152
+    },
+    "Ridge": {
+      "train_rmse": 0.02279159765160764,
+      "val_rmse": 0.02421567532173997,
+      "test_rmse": 0.024074365849820773,
+      "test_r2": 0.8029511409909489,
+      "test_mae": 0.01885238499830597
+    },
+    "RandomForest": {
+      "train_rmse": 0.005359012324005499,
+      "val_rmse": 0.026688797906441016,
+      "test_rmse": 0.02643439543201851,
+      "test_r2": 0.7624237751560218,
+      "test_mae": 0.01971155585600516
+    },
+    "XGBoost": {
+      "train_rmse": 0.005675455834844665,
+      "val_rmse": 0.022066318293111422,
+      "test_rmse": 0.02321582737418165,
+      "test_r2": 0.8167548267435976,
+      "test_mae": 0.017550511068320698
+    },
+    "SVR": {
+      "train_rmse": 0.010834839723093105,
+      "val_rmse": 0.017276706852283098,
+      "test_rmse": 0.019144060231704143,
+      "test_r2": 0.8753959046865064,
+      "test_mae": 0.014365709278468027
+    }
+  },
+  "hyperparameters": {
+    "Lasso": {
+      "alpha": 0.0001,
+      "max_iter": 10000
+    },
+    "Ridge": {
+      "alpha": 1.0
+    },
+    "RandomForest": {
+      "n_estimators": 200,
+      "max_depth": 18,
+      "min_samples_leaf": 5
+    },
+    "XGBoost": {
+      "n_estimators": 400,
+      "max_depth": 8,
+      "learning_rate": 0.05,
+      "subsample": 0.9,
+      "colsample_bytree": 0.9
+    },
+    "SVR": {
+      "kernel": "rbf",
+      "C": 1.0,
+      "epsilon": 0.005,
+      "gamma": "scale"
+    },
+    "SVM_clf": {
+      "kernel": "rbf",
+      "C": 1.0,
+      "gamma": "scale"
+    },
+    "MLP": {
+      "hidden": [
+        128,
+        64,
+        32
+      ],
+      "dropout": 0.2,
+      "lr": 0.001,
+      "epochs": 30,
+      "batch_size": 512
+    },
+    "LSTM": {
+      "units": [
+        64,
+        32
+      ],
+      "dropout": 0.2,
+      "lr": 0.001,
+      "epochs": 30,
+      "batch_size": 512
+    },
+    "GRU": {
+      "units": [
+        64,
+        32
+      ],
+      "dropout": 0.2,
+      "lr": 0.001,
+      "epochs": 30,
+      "batch_size": 512
+    },
+    "BiLSTM": {
+      "units": [
+        64,
+        32
+      ],
+      "dropout": 0.2,
+      "lr": 0.001,
+      "epochs": 30,
+      "batch_size": 512
+    },
+    "BiRNN": {
+      "units": [
+        64,
+        32
+      ],
+      "dropout": 0.2,
+      "lr": 0.001,
+      "epochs": 30,
+      "batch_size": 512
+    },
+    "CNN": {
+      "filters": 64,
+      "kernel": 3,
+      "lr": 0.001,
+      "epochs": 30,
+      "batch_size": 512
+    },
+    "Transformer": {
+      "heads": 4,
+      "ff_dim": 64,
+      "blocks": 2,
+      "lr": 0.001,
+      "epochs": 30,
+      "batch_size": 512
+    }
+  }
+}
